@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ValutaController">
+   <children>
+      <AnchorPane fx:id="valutaKalkulator" prefHeight="560.0" prefWidth="620.0">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="30.0" layoutY="142.0" prefHeight="304.0" prefWidth="178.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="29.0" text="Fra ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="fraValutaChoices" prefWidth="150.0" />
+                  <Label fx:id="fraValutaChoosen" alignment="CENTER" prefHeight="79.0" prefWidth="150.0" textAlignment="CENTER" />
+                  <TextField fx:id="fraValuta" alignment="CENTER" prefHeight="160.0" prefWidth="178.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="301.0" layoutY="152.0" prefHeight="304.0" prefWidth="312.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="29.0" text="Til">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="tilValutaChoices" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0">
+                     <cursor>
+                        <Cursor fx:constant="NW_RESIZE" />
+                     </cursor>
+                  </ChoiceBox>
+                  <Button mnemonicParsing="false" onAction="#buttonConverter" text="Convert" />
+                  <Label fx:id="tilValutaChoosen" prefHeight="53.0" prefWidth="150.0" />
+                  <Label fx:id="tilValuta" alignment="CENTER" prefHeight="186.0" prefWidth="312.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label layoutX="251.0" layoutY="322.0" prefHeight="68.0" prefWidth="29.0" text="=">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="187.0" layoutY="37.0" prefHeight="68.0" prefWidth="227.0" text="Valutakalkulator ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="431.0" layoutY="478.0" mnemonicParsing="false" onAction="#changeToValutaDevelopment" text="Diagram" />
+            <Button layoutX="489.0" layoutY="478.0" mnemonicParsing="false" onAction="#changeToFilReadWrite" prefHeight="26.0" prefWidth="62.0" text="Fil" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="valutaDiagram" prefHeight="560.0" prefWidth="620.0">
+         <children>
+            <HBox prefHeight="180.0" prefWidth="578.0">
+               <children>
+                  <AnchorPane prefHeight="180.0" prefWidth="285.0">
+                     <children>
+                        <Button layoutX="117.0" layoutY="78.0" mnemonicParsing="false" onAction="#velgButtonPressed" text="Velg" />
+                        <ChoiceBox fx:id="valutaUtviklingChoices" layoutX="67.0" layoutY="104.0" prefWidth="150.0" />
+                        <Label layoutX="50.0" layoutY="52.0" prefHeight="26.0" prefWidth="178.0" text="Velg valuta du vil se utvilking pÃ¥ " />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="180.0" prefWidth="293.0">
+                     <children>
+                        <Button layoutX="211.0" layoutY="140.0" mnemonicParsing="false" onAction="#changeToValutaCalculator" text="Tilbake til ValuraKalkulator" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <VBox layoutY="178.0" prefHeight="394.0" prefWidth="582.0">
+               <children>
+                  <AnchorPane prefHeight="42.0" prefWidth="582.0">
+                     <children>
+                        <Label fx:id="utviklingsValuta" layoutX="215.0" layoutY="11.0" prefHeight="18.0" prefWidth="352.0" />
+                        <Label layoutX="57.0" layoutY="11.0" prefHeight="18.0" prefWidth="157.0" text="Utvikling de siste 10 Ã¥rene til" />
+                     </children>
+                  </AnchorPane>
+                  <LineChart fx:id="lineChartValuta" prefHeight="353.0" prefWidth="582.0" title="Utvikling per Ã¥r">
+                    <xAxis>
+                      <NumberAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="valutaFiler" prefHeight="560.0" prefWidth="620.0">
+         <children>
+            <VBox layoutX="2.0" layoutY="2.0" prefHeight="560.0" prefWidth="620.00">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="71.0" prefWidth="620.0" text="Skriv til fil" textAlignment="CENTER">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="100.0" prefWidth="513.0">
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="452.0" text="Skriv inn kurs og valuta (VALUTA: KURS)" />
+                              <TextField fx:id="newExchangeRate" layoutX="257.0" layoutY="32.0" prefHeight="68.0" prefWidth="194.0" />
+                              <TextField fx:id="newValuta" layoutY="32.0" prefHeight="68.0" prefWidth="194.0" />
+                              <Label layoutX="-1.0" layoutY="18.0" prefHeight="18.0" prefWidth="194.0" text="VALUTA" />
+                              <Label layoutX="257.0" layoutY="18.0" prefHeight="18.0" prefWidth="194.0" text="KURS" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="35.0" layoutY="74.0" mnemonicParsing="false" onAction="#writeToFile" prefHeight="18.0" prefWidth="82.0" text="Skriv til fil" />
+                              <TextField fx:id="filenameWrite" layoutX="2.0" layoutY="37.0" />
+                              <Label layoutX="3.0" layoutY="14.0" prefHeight="18.0" prefWidth="149.0" text="Skriv inn filnavn under:" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+                  <AnchorPane prefHeight="151.0" prefWidth="620.0">
+                     <children>
+                        <Label fx:id="writeToFileReturnSuccess" layoutX="454.0" layoutY="7.0" prefHeight="35.0" prefWidth="165.0" />
+                     </children>
+                  </AnchorPane>
+                  <HBox prefHeight="186.0" prefWidth="620.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="18.0" prefWidth="200.0" text="Skriv inn filnavn under:" />
+                              <Button layoutX="37.0" layoutY="64.0" mnemonicParsing="false" onAction="#readFromFile" prefHeight="35.0" prefWidth="124.0" text="Lest fra fil" />
+                              <Label fx:id="readFromFileReturnSuccess" layoutX="2.0" layoutY="131.0" prefHeight="18.0" prefWidth="194.0" />
+                              <TextField fx:id="filenameRead" layoutX="26.0" layoutY="28.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="186.0" prefWidth="416.0">
+                           <children>
+                              <ListView fx:id="fileList" prefHeight="200.0" prefWidth="416.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+                  <AnchorPane prefHeight="47.0" prefWidth="620.0">
+                     <children>
+                        <Button layoutX="486.0" layoutY="10.0" mnemonicParsing="false" onAction="#changeToValutaCalculator" prefHeight="26.0" prefWidth="133.0" text="Valutakalkutaltor" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
